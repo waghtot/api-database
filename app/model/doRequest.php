@@ -5,9 +5,9 @@ class doRequest extends Controller{
         $this->setConnection($data->connection);
 
         if(!empty($data->connection) && !empty($data->procedure)){
-            if(!empty($data->param)){
+            if(!empty($data->params)){
                 $parameters = '(';
-                foreach($data->param as $value){
+                foreach($data->params as $value){
                         if(isset($value->value)){
                             $val = $value->value;
                         }else{

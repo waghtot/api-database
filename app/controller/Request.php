@@ -4,7 +4,7 @@ class Request extends Controller{
     public $data = array();
     public $conection;
     public $procedure;
-    public $param = array();
+    public $params = array();
     public $response;
 
     public function __construct(){
