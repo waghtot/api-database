@@ -16,7 +16,6 @@ class Controller
     public function setRequest()
     {
         $this->request = json_decode(file_get_contents('php://input'));
-        error_log('Controller::setRequest: '.print_r($this->request, 1));
     }
 
     public function setData(){
@@ -46,7 +45,6 @@ class Controller
 
     public function setConnection($string)
     {
-
         $this->connection = self::getConnectionConfig($string);
     }
 
@@ -91,11 +89,13 @@ class Controller
 
     public function getConnectionConfig($string)
     {
-        return parse_ini_file('/etc/config/dbc.ini')[$string];
+	    require('/etc/config/constants.php');
+        return $dbr[$string];
     }
 
     public function getConfiguration()
     {
-        return parse_ini_file('/etc/config/dbc.ini')['dbcon'];
+	    require('/etc/config/constants.php');
+        return $dbc;
     }
 }

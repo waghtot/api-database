@@ -11,13 +11,15 @@ class Database extends Controller {
 	private $dbh;
 	private $error;
 	private $stmt;
-	
 	public function __construct() {
+		$this->setRequest();
+		$con = $this->getRequest()->connection;
 		// Set DSN
-		$dbcon = new stdClass();
+		//$dbcon = new stdClass();
 		$dbcon = $this->getConfiguration();
-
-		$dsn = 'mysql:host=' . $dbcon['host'] . ';dbname=' . $this->getConnection();
+		//error_log('do we have it?: '.$this->getConnection());
+		$dsn = 'mysql:host=' . $dbcon['host'] . ';dbname=' . $this->getConnectionConfig($con);
+		//$dsn = 'mysql:host='192.168.1.100';dbname=' . $this->getConnectionConfig($con);
 		$options = array (
 			PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 			PDO::ATTR_PERSISTENT => true,
