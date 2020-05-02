@@ -23,8 +23,9 @@ class doRequest extends Controller{
             }
 	    //error_log('connection: '.$this->getConnection().' '.$data->connection);
             $call = 'CALL '.$this->getConnection().'.'.$data->procedure.$parameters;
+            error_log($call);
             $data = new Database();
-	    $data->query($call);
+            $data->query($call);
             $this->res = $data->resultset();
             echo json_encode($this->res);
         }
