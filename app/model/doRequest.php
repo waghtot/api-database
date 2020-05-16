@@ -27,6 +27,7 @@ class doRequest extends Controller{
             $data = new Database();
             $data->query($call);
             $this->res = $data->resultset();
+            error_log('pdo response: '.print_r($this->res, 1));
             echo json_encode($this->res);
         }
     }
