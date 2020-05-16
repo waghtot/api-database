@@ -23,9 +23,11 @@ class doRequest extends Controller{
             }
 	    //error_log('connection: '.$this->getConnection().' '.$data->connection);
             $call = 'CALL '.$this->getConnection().'.'.$data->procedure.$parameters;
+            error_log($call);
             $data = new Database();
-	    $data->query($call);
+            $data->query($call);
             $this->res = $data->resultset();
+            error_log('pdo response: '.print_r($this->res, 1));
             echo json_encode($this->res);
         }
     }

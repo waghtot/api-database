@@ -95,7 +95,7 @@ class Controller
 
     public function getConfiguration()
     {
-	    require('/etc/config/constants.php');
+        require('/etc/config/constants.php');
         return $dbc;
     }
 }

@@ -20,6 +20,7 @@ class Database extends Controller {
 		//error_log('do we have it?: '.$this->getConnection());
 		$dsn = 'mysql:host=' . $dbcon['host'] . ';dbname=' . $this->getConnectionConfig($con);
 		//$dsn = 'mysql:host='192.168.1.100';dbname=' . $this->getConnectionConfig($con);
+		error_log('do we have it?: '.print_r($dsn, 1));
 		$options = array (
 			PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 			PDO::ATTR_PERSISTENT => true,
