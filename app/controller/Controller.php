@@ -93,9 +93,9 @@ class Controller
         return $dbr[$string];
     }
 
-    public function getConfiguration()
-    {
-        require('/etc/config/constants.php');
-        return $dbc;
-    }
+    // public function getConfiguration()
+    // {
+    //     require('/etc/config/Constants.php');
+    //     return $dbc;
+    // }
 }

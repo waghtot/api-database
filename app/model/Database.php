@@ -1,11 +1,5 @@
 <?php
-	/* 
-   *  PDO DATABASE CLASS
-   *  Connects Database Using PDO
-	 *  Creates Prepeared Statements
-	 * 	Binds params to values
-	 *  Returns rows and results
-   */
+
 class Database extends Controller {
 
 	private $dbh;
@@ -14,21 +8,18 @@ class Database extends Controller {
 	public function __construct() {
 		$this->setRequest();
 		$con = $this->getRequest()->connection;
-		// Set DSN
-		//$dbcon = new stdClass();
-		$dbcon = $this->getConfiguration();
-		//error_log('do we have it?: '.$this->getConnection());
-		$dsn = 'mysql:host=' . $dbcon['host'] . ';dbname=' . $this->getConnectionConfig($con);
-		//$dsn = 'mysql:host='192.168.1.100';dbname=' . $this->getConnectionConfig($con);
-		error_log('do we have it?: '.print_r($dsn, 1));
+		$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . $this->getConnectionConfig($con);
+
 		$options = array (
 			PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 			PDO::ATTR_PERSISTENT => true,
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 		);
+
 		// Create a new PDO instanace
 		try {
-			$this->dbh = new PDO ($dsn, $dbcon['user'], $dbcon['pass'], $options);
+
+			$this->dbh = new PDO ($dsn, DB_USER, DB_PASS, $options);
 		}		// Catch any errors
 		catch ( PDOException $e ) {
 			$this->error = $e->getMessage();
